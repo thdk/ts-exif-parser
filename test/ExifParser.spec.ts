@@ -32,6 +32,15 @@ describe('ExifParser', () => {
     delete actual.imageSize;
     delete actual.startMarker.openWithOffset;
     assert.deepEqual(actual, expected);
+  });
 
+  it('Should not throw RangeError when parsing image3', () => {
+    const buf = new Int8Array(fs.readFileSync(__dirname + '/assets/image3.jpg')).buffer;
+    assert.doesNotThrow(
+      () => {
+        JSON.parse(JSON.stringify(ExifParserFactory.create(buf).parse()));
+      },
+      RangeError
+    );
   });
 });
