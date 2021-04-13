@@ -157,6 +157,10 @@ export class ExifSectionParser {
   }
 
   private static readIFDSection(tiffMarker, stream, iterator) {
+    // make sure we can read nextUint16 byte
+    if (stream.remainingLength() < 2){
+      return;
+    }
     let numberOfEntries = stream.nextUInt16(), tag, i;
     for (i = 0; i < numberOfEntries; ++i) {
       tag =  ExifSectionParser.readExifTag(tiffMarker, stream);
