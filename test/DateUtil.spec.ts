@@ -53,8 +53,18 @@ describe('DateUtil', () => {
     const timestamp = DateUtil.parseDateWithTimezoneFormat(dateStr);
     assert.strictEqual(timestamp, undefined);
   });
-  it('should parseExifDate', () => {
-    assert.strictEqual(DateUtil.parseExifDate('1970:01:01 00:00:00'), 0);
-    assert.strictEqual(DateUtil.parseExifDate('1970-01-01T00:00:00-01:00'), 3600);
+
+  describe("parseExifDate", () => {
+    it('should parseExifDate', () => {
+      assert.strictEqual(DateUtil.parseExifDate('1970:01:01 00:00:00'), 0);
+      assert.strictEqual(DateUtil.parseExifDate('1970-01-01T00:00:00-01:00'), 3600);
+    });
+  
+    it('should return undefined when datestring has unsupported format', () => {
+      // date and time must be separated by either a 'space' or a 'T'
+      const dateStr = '2004:09:04-23:39:06';
+      const timestamp = DateUtil.parseExifDate(dateStr);
+      assert.strictEqual(timestamp, undefined);
+    });
   });
 });

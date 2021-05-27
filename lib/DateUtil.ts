@@ -78,12 +78,12 @@ export class DateUtil {
 
     //is the date in the standard "YYYY:MM:DD hh:mm:ss" format?
     let isSpecFormat = dateTimeStr.length === 19 &&
-      dateTimeStr.charAt(4) === ':';
+      dateTimeStr.charAt(4) === ':' &&
+      dateTimeStr.charAt(10) === " ";
     //is the date in the non-standard format,
     //"2004-09-04T23:39:06-08:00" to include a timezone?
     let isTimezoneFormat = dateTimeStr.length === 25 &&
       dateTimeStr.charAt(10) === 'T';
-    let timestamp;
 
     if (isTimezoneFormat) {
       return DateUtil.parseDateWithTimezoneFormat(dateTimeStr);
