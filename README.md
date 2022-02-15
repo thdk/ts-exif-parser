@@ -81,6 +81,17 @@ To get the node buffer or arraybuffer containing just the thumbnail, call ```res
 npm test
 ```
 
+# Using the browser bundle
+
+When installed, you'll find the browser bundle in `node_modules/ts-exif-parser/dist/umd/ts-exif-parser.js`. It's a non minified file. So you must minify it yourself to fit your needs.
+
+This bundle provides a `TsExifParser` global variable.
+
+```javascript
+var parser = TsExifParser.ExifParserFactory.create(data);
+var Data = TsExifParser.ExifParserFactory.create(data).parse();
+```
+
 # Contributions
 
 I welcome external contributions through pull requests.

@@ -1,8 +1,8 @@
-export {ExifParserFactory} from './lib/ExifParserFactory';
+export {ExifParserFactory} from './ExifParserFactory';
 export {
   OrientationTypes,
   ExifData,
   ExifTags,
   ImageSize,
   ThumbnailTypes,
-} from './lib/ExifData';
+} from './ExifData';
